@@ -51,14 +51,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get UTRP Version and Tag
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        id: version
+        run: |
+          VERSION=$(nix develop --command node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release with Assets
         if: steps.changesets.outputs.hasChangesets == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.changesets.outputs.publishedPackages[0].version }}
-          name: Release v${{ steps.changesets.outputs.publishedPackages[0].version }}
+          tag_name: v${{ steps.version.outputs.tag }}
+          name: Release v${{ steps.version.outputs.version }}
           files: |
-            packages/*.zip
+            packages/ut-registration-plus-${{ steps.version.outputs.version }}.zip
+          generate_release_notes: true
           draft: false
           prerelease: false
         env:
