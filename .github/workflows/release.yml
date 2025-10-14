@@ -51,7 +51,7 @@ jobs:
 
       - name: Create GitHub Release with Assets
         if: steps.changesets.outputs.published == 'true'
-        uses: softprops/action-gh-release@v5
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.changesets.outputs.publishedPackages[0].version }}
           name: Release v${{ steps.changesets.outputs.publishedPackages[0].version }}
