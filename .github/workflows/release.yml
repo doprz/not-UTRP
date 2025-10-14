@@ -46,6 +46,8 @@ jobs:
         with:
           version: nix develop .#full --command pnpm run version
           publish: nix develop .#full --command pnpm run release
+          commit: 'feat(release): version packages'
+          title: 'feat(release): version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
