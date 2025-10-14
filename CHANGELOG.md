@@ -1,7 +1,8 @@
-## 2.3.1 (2025-10-14)
+## 2.4.0 (2025-10-14)
 
 ### Features
 
+* **release:** version packages ([bef01d0](https://github.com/doprz/not-UTRP/commit/bef01d0d169965b8698373efc331679a27693899))
 * **release:** version packages ([c91abe6](https://github.com/doprz/not-UTRP/commit/c91abe6d8838b1168472361ccab5fa4a669084cc))
 
 ### Bug Fixes
