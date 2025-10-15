@@ -46,8 +46,8 @@ jobs:
         with:
           version: nix develop .#full --command pnpm run version
           publish: nix develop .#full --command pnpm run release
-          commit: 'feat(release): UTRP'
-          title: 'feat(release): UTRP'
+          commit: 'feat(release): version UTRP'
+          title: 'feat(release): version UTRP'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
