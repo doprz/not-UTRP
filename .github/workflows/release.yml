@@ -39,28 +39,25 @@ jobs:
 
       - name: Install Dependencies
         run: nix develop .#full --command pnpm install --frozen-lockfile
-      
-      - name: Version
-        id: version
-        run: |
-          # Run changeset version and generate changelog
-          nix develop .#full --command pnpm run version
-          
-          # Get the new version
-          VERSION=$(nix develop --command node -p "require('./package.json').version")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
-        
-      - name: Create Release Pull Request
+
+      - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          version: echo "UTRP version updated to ${{ steps.version.outputs.version }}"
+          version: nix develop .#full --command pnpm run version
           publish: nix develop .#full --command pnpm run release
-          commit: 'feat(release): ${{ steps.version.outputs.tag }}'
-          title: 'feat(release): ${{ steps.version.outputs.tag }}'
+          commit: 'feat(release): UTRP'
+          title: 'feat(release): UTRP'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get UTRP Version and Tag
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        id: version
+        run: |
+          VERSION=$(nix develop --command node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release with Assets
         if: steps.changesets.outputs.hasChangesets == 'false'
