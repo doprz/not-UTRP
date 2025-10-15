@@ -1,7 +1,8 @@
-## 2.6.1 (2025-10-14)
+## [2.7.0](https://github.com/doprz/not-UTRP/compare/v2.6.1...v2.7.0) (2025-10-15)
 
 ### Features
 
+* **release:** version packages ([79d490e](https://github.com/doprz/not-UTRP/commit/79d490e775440d5f4a3cf7293abef4bdc652f133))
 * **release:** version packages ([16c99b9](https://github.com/doprz/not-UTRP/commit/16c99b9d6e15e0f406d850a46e2c4dfd7dd5849a))
 * **release:** version packages ([c674aa8](https://github.com/doprz/not-UTRP/commit/c674aa80f9485e04149f106ed1e1fd622e68d851))
 * **release:** version packages ([4497f91](https://github.com/doprz/not-UTRP/commit/4497f91200cf28e8ed8ae6ad2cbaf45fbfd46521))
