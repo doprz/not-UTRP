@@ -1,4 +1,4 @@
-# UT Registration Plus
+# NOT UT Registration Plus
 
 ![UTRP Social Preview](images/UTRP_Social-Preview_Prod.svg)
 
